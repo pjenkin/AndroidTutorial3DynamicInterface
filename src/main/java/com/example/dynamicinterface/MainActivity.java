@@ -59,7 +59,13 @@ public class MainActivity extends AppCompatActivity {
         buttonDetails.addRule(RelativeLayout.CENTER_VERTICAL);
 
 
+        Resources r = getResources();
+        int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                200,r.getDisplayMetrics());
+        // *applyDimension* to calculate density-independent-pixels -> pixels
 
+        // setWidth requiring pixels (not dp/dip) parameter (Ctrl+Q to see)
+        username.setWidth(px);
 
         pnjLayout.addView(redButton, buttonDetails);       // NB Button inheriting from View
         pnjLayout.addView(username, usernameDetails);      // also add username to view/layout
