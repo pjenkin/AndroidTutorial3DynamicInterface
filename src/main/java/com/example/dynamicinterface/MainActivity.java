@@ -19,22 +19,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // setContentView(R.layout.activity_main);             // defining user interface - REM this out
 
+        // Layout
         RelativeLayout pnjLayout = new RelativeLayout(this);
         pnjLayout.setBackgroundColor(Color.GREEN);
 
+        RelativeLayout.LayoutParams buttonDetails = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        // container height & width parameters passed herein
 
+        buttonDetails.addRule(RelativeLayout.CENTER_HORIZONTAL);    // for centre'ing a widget in device view
+        buttonDetails.addRule(RelativeLayout.CENTER_VERTICAL);
+
+        // Button
         Button redButton = new Button(this);
         redButton.setText(R.string.click_me);                   // string set using string resource
         redButton.setBackgroundColor(Color.RED);
 
-        pnjLayout.addView(redButton);       // NB Button inheriting from View
+        pnjLayout.addView(redButton, buttonDetails);       // NB Button inheriting from View
 
         setContentView(pnjLayout);
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+// REM out boilerplate, as causing a runtime error
 //        FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
