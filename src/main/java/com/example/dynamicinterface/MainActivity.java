@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;           // position things relative to something else
 import android.widget.Button;
+import android.graphics.Color;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,8 +20,12 @@ public class MainActivity extends AppCompatActivity {
         // setContentView(R.layout.activity_main);             // defining user interface - REM this out
 
         RelativeLayout pnjLayout = new RelativeLayout(this);
+        pnjLayout.setBackgroundColor(Color.GREEN);
+
 
         Button redButton = new Button(this);
+        redButton.setText(R.string.click_me);                   // string set using string resource
+        redButton.setBackgroundColor(Color.RED);
 
         pnjLayout.addView(redButton);       // NB Button inheriting from View
 
