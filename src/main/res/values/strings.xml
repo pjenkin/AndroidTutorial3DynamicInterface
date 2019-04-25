@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">DynamicInterface</string>
     <string name="action_settings">Settings</string>
-    <string name="click_me">Click me</string>
+    <string name="click_me">Log in</string>
 </resources>

@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.RelativeLayout;           // position things relative to something else
 import android.widget.Button;
 import android.graphics.Color;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,20 +24,39 @@ public class MainActivity extends AppCompatActivity {
         RelativeLayout pnjLayout = new RelativeLayout(this);
         pnjLayout.setBackgroundColor(Color.GREEN);
 
-        RelativeLayout.LayoutParams buttonDetails = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
-        // container height & width parameters passed herein
-
-        buttonDetails.addRule(RelativeLayout.CENTER_HORIZONTAL);    // for centre'ing a widget in device view
-        buttonDetails.addRule(RelativeLayout.CENTER_VERTICAL);
-
         // Button
         Button redButton = new Button(this);
         redButton.setText(R.string.click_me);                   // string set using string resource
         redButton.setBackgroundColor(Color.RED);
+        redButton.setId(1);     // ID useful for relative positioning, inter alia
+
+        // EditText input for username
+        EditText username = new EditText(this);
+        username.setId(2);      // TODO: set a valid ID here, not just an integer
+
+        RelativeLayout.LayoutParams buttonDetails = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        // container (for button) buttonDetails'  height & width parameters passed herein
+
+        RelativeLayout.LayoutParams usernameDetails = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+        // Add position rules so as to position widgets
+        usernameDetails.addRule(RelativeLayout.ABOVE, redButton.getId());
+        usernameDetails.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        usernameDetails.setMargins(0, 0, 0, 50);
+        // margins / padding from next element (ie button in this case)
+        // Ctrl+Q to see parameters: left, top, right, bottom
+
+        buttonDetails.addRule(RelativeLayout.CENTER_HORIZONTAL);    // for centre'ing a widget in device view
+        buttonDetails.addRule(RelativeLayout.CENTER_VERTICAL);
+
 
         pnjLayout.addView(redButton, buttonDetails);       // NB Button inheriting from View
+        pnjLayout.addView(username, usernameDetails);      // also add username to view/layout
+        // NB usernameDetails to apply formatting as defined
 
         setContentView(pnjLayout);
 
