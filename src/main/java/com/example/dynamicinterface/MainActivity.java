@@ -12,6 +12,8 @@ import android.widget.RelativeLayout;           // position things relative to s
 import android.widget.Button;
 import android.graphics.Color;
 import android.widget.EditText;
+import android.content.res.Resources;           // to use dp for pixels
+import android.util.TypedValue;                 // to use dp for pixels
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,11 +30,12 @@ public class MainActivity extends AppCompatActivity {
         Button redButton = new Button(this);
         redButton.setText(R.string.click_me);                   // string set using string resource
         redButton.setBackgroundColor(Color.RED);
-        redButton.setId(1);     // ID useful for relative positioning, inter alia
+        redButton.setId(R.id.button_id);     // ID useful for relative positioning, inter alia
 
         // EditText input for username
         EditText username = new EditText(this);
-        username.setId(2);      // TODO: set a valid ID here, not just an integer
+        username.setId(R.id.text_id);
+        // old way of doing this, using xml file - https://stackoverflow.com/a/29697092/11365317
 
         RelativeLayout.LayoutParams buttonDetails = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -50,8 +53,12 @@ public class MainActivity extends AppCompatActivity {
         // margins / padding from next element (ie button in this case)
         // Ctrl+Q to see parameters: left, top, right, bottom
 
+
+
         buttonDetails.addRule(RelativeLayout.CENTER_HORIZONTAL);    // for centre'ing a widget in device view
         buttonDetails.addRule(RelativeLayout.CENTER_VERTICAL);
+
+
 
 
         pnjLayout.addView(redButton, buttonDetails);       // NB Button inheriting from View
