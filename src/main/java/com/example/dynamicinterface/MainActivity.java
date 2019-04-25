@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         EditText username = new EditText(this);
         username.setId(R.id.text_id);
         // old way of doing this, using xml file - https://stackoverflow.com/a/29697092/11365317
+//        username.setId(View.generateViewId());      // need min API 17 to do this
 
         RelativeLayout.LayoutParams buttonDetails = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
