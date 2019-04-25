@@ -8,13 +8,23 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;           // position things relative to something else
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {            // this called first cf State messages, so layout here
         super.onCreate(savedInstanceState);
-       setContentView(R.layout.activity_main);
+        // setContentView(R.layout.activity_main);             // defining user interface - REM this out
+
+        RelativeLayout pnjLayout = new RelativeLayout(this);
+
+        Button redButton = new Button(this);
+
+        pnjLayout.addView(redButton);       // NB Button inheriting from View
+
+        setContentView(pnjLayout);
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
